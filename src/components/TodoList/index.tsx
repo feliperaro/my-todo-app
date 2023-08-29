@@ -1,11 +1,11 @@
 import { useState } from 'react'
+import Todo from '../Todo'
 
 
 const TodoList = () => {
     const [selectedTodo, setSelectedTodo] = useState<number>(0)
     const [todo, setTodo] = useState<string>("") 
-    const [todos, setTodos] = useState(["Buy Groceries", "Clean the house", "Walk the dog"])
-    // const [todos, setTodos] = useState<string[]>([])
+    const [todos, setTodos] = useState<string[]>(["Buy Groceries", "Clean the house", "Walk the dog"])
 
     const checkTodos = (): boolean => {
         if (todos.length === 0) {
@@ -18,7 +18,6 @@ const TodoList = () => {
         if (todo === "") {
             return
         } 
-        setSelectedTodo(0)
         setTodo("")
         setTodos([...todos, todo])
     }
@@ -39,9 +38,11 @@ const TodoList = () => {
                     <span>Create your first todo!</span>
                 )}
                 {checkTodos() && todos.map((todo, index) => (
-                    <li key={index} className="list-group-item">
-                        <button onClick={() => handleSelectTodo(index)}>{todo}</button>
-                    </li>
+                    <Todo 
+                        index={index}
+                        text={todo}
+                        handleTodo={() => handleSelectTodo(index)}
+                    />
                 ))}
             </ul>
             <br/>
