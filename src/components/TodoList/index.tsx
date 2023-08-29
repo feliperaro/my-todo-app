@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Todo from '../Todo'
 
 
-const TodoList = () => {
+export default function TodoList () {
     const [selectedTodo, setSelectedTodo] = useState<number>(0)
     const [todo, setTodo] = useState<string>("") 
     const [todos, setTodos] = useState<string[]>(["Buy Groceries", "Clean the house", "Walk the dog"])
@@ -42,15 +42,16 @@ const TodoList = () => {
                         index={index}
                         text={todo}
                         handleTodo={() => handleSelectTodo(index)}
+                        selectedTodo={selectedTodo}
                     />
                 ))}
             </ul>
-            <br/>
             {selectedTodo !== 0 && (
                 <span>Selected todo: {selectedTodo}</span>
             )}
             <br/>
-            <div className="mb-3">
+            <br/>
+            <div>
                 <label className="form-label">{'Add Todo'}</label>
                 <input type="text" className="form-control" id="todoInput" aria-describedby="todo"
                     value={todo}
@@ -61,5 +62,3 @@ const TodoList = () => {
         </>
     )
 }
-
-export default TodoList
