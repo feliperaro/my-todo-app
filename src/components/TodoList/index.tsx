@@ -50,15 +50,14 @@ const TodoList = () => {
                 <span>Selected todo: {selectedTodo}</span>
             )}
             <br/>
-            <br/>
             <div className="mb-3">
-                <label className="form-label">ADD TODO</label>
+                <label className="form-label">{'Add Todo'}</label>
                 <input type="text" className="form-control" id="todoInput" aria-describedby="todo"
                     value={todo}
                     onChange={handleInputTodo}
                 />
             </div>
-            <button type="submit" className="btn btn-primary m-2" onClick={() => handleCreateTodo()}>Create</button>
+            <button type="submit" className="btn btn-primary m-2" onClick={() => handleCreateTodo()}>Create</button>      
         </>
     )
 }
